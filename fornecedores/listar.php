@@ -1,3 +1,10 @@
+<?php 
+require_once "../src/fornecedor_crud.php";
+
+// Chamando a função (e passando os dados da conexão), e recebendo/guardando o arry com dados dos fornecedores
+$fornecedores = buscarFornecedores($conexao);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -29,7 +36,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Aqui serão geradas as linhas com os dados e as ações Editar e Excluir de cada registro. -->
+                    <?php foreach($fornecedores as $fornecedor): ?>
+                    <tr>
+                        <td><?= $fornecedor["id"] ?></td>
+                        <td><?= $fornecedor["nome"] ?></td>
+                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

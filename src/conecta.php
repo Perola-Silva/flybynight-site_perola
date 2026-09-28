@@ -31,5 +31,3 @@ try {
     // Na interface pública, exibimos uma mensagem generica para o usuario
     exit("Não foi possível conectar ao banco.");
 }
-
-var_dump($conexao);
