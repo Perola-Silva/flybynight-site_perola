@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <!-- Modelo visual: os campos não são enviados nem persistidos. -->
         <!-- Os campos serão preenchidos com os dados do registro selecionado. -->
         <form action="" method="post">
-            <!-- Usamos um campo oculto (input hidden) paa garantir qeu o formulario também possui o id do fornecedor -->
+            <!-- Usamos um campo oculto (input hidden) para garantir que o formulario também possui o id do fornecedor -->
             <input type="hidden" name="id" value="<?= $fornecedor['id'] ?>">
             <div>
                 <label for="nome">Nome:</label>

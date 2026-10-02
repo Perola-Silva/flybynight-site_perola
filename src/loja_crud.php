@@ -21,3 +21,15 @@ function inserirLoja(PDO $conexao, string $nome): void{
 
     $consulta->execute();
 }
+
+function buscarLojaPorId(PDO $conexao, int $id): array{
+    $sql = "SELECT * FROM lojas WHERE id = :id";
+
+    $consulta = $conexao->prepare($sql);
+
+    $consulta->bindValue(":id", $id);
+
+    $consulta->execute();
+
+    return $consulta->fetch();
+}
