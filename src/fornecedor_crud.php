@@ -6,7 +6,7 @@ require_once "conecta.php";
 
 // Usada em fornecedores/listar.php
 function buscarFornecedores(PDO $conexao): array {
-    // Montanbdo o comando SQL para consulta
+    // Montando o comando SQL para consulta
     $sql = "SELECT * FROM fornecedores ORDER BY nome";
 
     // Executando o comando
