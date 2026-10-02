@@ -5,9 +5,15 @@ $id = $_GET['id'];
 
 $loja = buscarLojaPorId($conexao, $id);
 
-// if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $nome = $_POST['nome'];
 
-// }
+    atualizarLoja($conexao, $nome, $id);
+
+    header("location:listar.php");
+
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
