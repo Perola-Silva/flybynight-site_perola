@@ -44,3 +44,13 @@ function atualizarLoja(PDO $conexao, string $nome, int $id): void{
 
     $consulta->execute();
 }
+
+function excluirLoja(PDO $conexao, int $id): void{
+    $sql = "DELETE FROM lojas WHERE id = :id";
+
+    $consulta = $conexao->prepare($sql);
+
+    $consulta->bindValue(":id", $id);
+
+    $consulta->execute();
+}
