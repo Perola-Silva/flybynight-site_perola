@@ -4,7 +4,7 @@
 require_once "conecta.php";
 
 function buscarProdutos(PDO $conexao):array {
-    $sql = "SELECT * FROM produtos";
+    $sql = "SELECT id, nome, preco, quantidade, fornecedor_id FROM produtos";
     $consulta = $conexao->query($sql);
     return $consulta->fetchAll();
 }
