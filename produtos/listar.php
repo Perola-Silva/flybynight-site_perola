@@ -2,11 +2,6 @@
 require_once "../src/produto_crud.php";
 
 $produtos = buscarProdutos($conexao);
-
-echo "<pre>";
-var_dump($produtos);
-echo "</pre>";
-
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +37,18 @@ echo "</pre>";
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Aqui serão geradas as linhas com os dados e as ações Editar e Excluir de cada registro. -->
+                    <?php foreach($produtos as $produto): ?>
+                        <tr>
+                            <td><?= $produto['nome_produto'] ?></td>
+                            <td><?= $produto['preco'] ?></td>
+                            <td><?= $produto['quantidade'] ?></td>
+                            <td><?= $produto['nome_fornecedor'] ?></td>
+                            <td>
+                            <a href="editar.php?id=<?= $produto['id'] ?>">Editar</a>
+                            <a href="excluir.php?id=<?= $produto['id'] ?>" class="excluir">Excluir</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
