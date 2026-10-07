@@ -76,8 +76,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     <option value=""></option>
                     <!-- 6) DESAFIO -->
                     <!-- 6.1) Usando foreach acesse os $fornecedores e mostre na tag <option> os nomes de cada fornecedor. -->
-                    <?php foreach($forncedores as $forncedor): ?>
+
                     <!-- 6.2) O fornecedor daquele produto que está sendo exibido, já deve vir selecionado. Programe os recursos para isso acontecer -->
+                    <?php foreach($forncedores as $forncedor): ?>
                     <option
                     <?php 
                     // if ($forncedor['id'] == $produto['fornecedor_id']) {
