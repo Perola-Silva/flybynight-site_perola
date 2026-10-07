@@ -53,6 +53,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <!-- PARTE 1 -->
         <!-- 5) Exibir os dados do produto em cada campo do formulario, no caso dos campos input, use o atributo value, no caso do campo textarea, coloque o valor dentro da tag -->
         <form action="" method="post">
+            <input type="hidden" name="id" value="<?= $produto['id'] ?>">
             <div>
                 <label for="nome">Nome:</label>
                 <input value="<?= $produto['nome'] ?>" type="text" name="nome" id="nome" maxlength="100" required>
