@@ -9,6 +9,7 @@ $forncedores = buscarFornecedores($conexao);
 // 1) Detectar o acionamento do formulario de inserção
 if($_SERVER['REQUEST_METHOD'] === "POST"){
 // 2) Capturar os dados do formulario
+// Obs: atenção ao name de cada campo
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $preco = $_POST['preco'];

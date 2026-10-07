@@ -31,3 +31,27 @@ function inserirProduto(PDO $conexao, string $nome, string $descricao, float $pr
 
     $consulta->execute();
 }
+
+function buscarProdutoPorId(PDO $conexao, int $id):array {
+    $sql = "SELECT * FROM produtos WHERE id = :id";
+    $consulta = $conexao->prepare($sql);
+    $consulta->bindValue(":id", $id);
+    $consulta->execute();
+    return $consulta->fetch();
+}
+
+function atualizarProduto(PDO $conexao, int $id, string $nome, string $descricao, float $preco, int $quantidade, int $fornecedor_id):void {
+    $sql = "UPDATE produtos SET 
+                nome = :nome, descricao = :descricao, preco = :preco, quantidade = :quantidade, fornecedor_id = :fornecedor_id
+            WHERE id = :id";
+    
+    $consulta = $conexao->prepare($sql);
+    $consulta->bindValue(":nome", $nome);
+    $consulta->bindValue(":descricao", $descricao);
+    $consulta->bindValue(":preco", $preco);
+    $consulta->bindValue(":quantidade", $quantidade);
+    $consulta->bindValue(":fornecedor_id", $fornecedor_id);
+    $consulta->bindValue(":id", $id);
+
+    $consulta->execute();
+}
