@@ -5,7 +5,9 @@ require_once "conecta.php";
 function buscarLojasProdutos(PDO $conexao): array{
     $sql = "SELECT 
                 lojas.nome AS nome_loja,
+                lojas.id AS loja_id,
                 produtos.nome AS nome_produto,
+                produtos.id AS produto_id,
                 lojas_produtos.estoque
             FROM lojas_produtos  
             JOIN lojas ON lojas.id = lojas_produtos.loja_id
