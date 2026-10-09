@@ -1,3 +1,7 @@
+<?php 
+require_once "../src/loja_produto_crud.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

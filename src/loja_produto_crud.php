@@ -30,3 +30,7 @@ function inserirLojaProduto(PDO $conexao, int $loja_id, int $produto_id, int $es
 
     $consulta->execute();
 }
+
+function buscarLojaProdutoPorIds (PDO $conexao, int $loja_id, int $produto_id){
+    $sql = "";
+}
