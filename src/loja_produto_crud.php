@@ -16,7 +16,7 @@ function buscarLojasProdutos(PDO $conexao): array{
     return $consulta->fetchAll();
 }
 
-function inserirLojaProduto(PDO $conexao, int $loja_id, int $produto_id, int $estoque){
+function inserirLojaProduto(PDO $conexao, int $loja_id, int $produto_id, int $estoque): void{
     $sql = "INSERT INTO lojas_produtos(loja_id, produto_id, estoque)
             VALUES (:loja_id, :produto_id, :estoque)";
 

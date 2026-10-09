@@ -5,6 +5,17 @@ require_once "../src/loja_produto_crud.php";
 
 $lojas = buscarLojas($conexao);
 $produtos = buscarProdutos($conexao);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $loja_id = $_POST['loja'];
+    $produto_id = $_POST['produto'];
+    $estoque = $_POST['estoque'];
+
+    inserirLojaProduto($conexao, $loja_id, $produto_id, $estoque);
+
+    header("location:listar.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
