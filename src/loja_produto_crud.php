@@ -2,7 +2,7 @@
 
 require_once "conecta.php";
 
-function buscarLojasProdutos(PDO $conexao){
+function buscarLojasProdutos(PDO $conexao): array{
     $sql = "SELECT 
                 lojas.nome AS nome_loja,
                 produtos.nome AS nome_produto,
