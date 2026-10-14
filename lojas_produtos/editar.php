@@ -1,5 +1,16 @@
 <?php 
 require_once "../src/loja_produto_crud.php";
+require_once "../src/loja_crud.php";
+require_once "../src/produto_crud.php";
+
+
+$loja_id = $_GET['loja_id'];
+$produto_id = $_GET['produto_id'];
+
+$lojas = buscarLojas($conexao);
+$produtos = buscarProdutos($conexao);
+
+$lojaProduto = buscarLojaProdutoPorIds($conexao, $loja_id, $produto_id);
 
 
 ?>
@@ -29,21 +40,29 @@ require_once "../src/loja_produto_crud.php";
             <div>
                 <label for="loja">Loja:</label>
                 <select name="loja" id="loja" required>
-                    <option value="">Selecione</option>
-                    <!-- As opções serão preenchidas com os registros do banco de dados. -->
+                    <?php foreach($lojas as $loja): ?>
+                        <option <?= ($lojaProduto['loja_id'] == $loja['id']) ? 'selected' : '' ?>
+                        value="<?= $loja['id'] ?>">
+                        <?= $loja['nome'] ?>
+                        </option>
+                    <?php endforeach ?>
                 </select>
             </div>
 
             <div>
                 <label for="produto">Produto:</label>
                 <select name="produto" id="produto" required>
-                    <option value="">Selecione</option>
-                    <!-- As opções serão preenchidas com os registros do banco de dados. -->
+                    <?php foreach($produtos as $produto): ?>
+                        <option <?= ($lojaProduto['produto_id'] == $produto['id']) ? 'selected' : '' ?>
+                        value="<?= $produto['id'] ?>">
+                        <?= $produto['nome_produto'] ?>
+                        </option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <div>
                 <label for="estoque">Estoque:</label>
-                <input type="number" name="estoque" id="estoque" min="0" step="1" required>
+                <input value="<?= $lojaProduto['estoque'] ?>" type="number" name="estoque" id="estoque" min="0" step="1" required>
             </div>
             <button type="submit">Atualizar</button>
         </form>
