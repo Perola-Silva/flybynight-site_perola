@@ -12,7 +12,17 @@ $produtos = buscarProdutos($conexao);
 
 $lojaProduto = buscarLojaProdutoPorIds($conexao, $loja_id, $produto_id);
 
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    $novo_loja_id = $_POST['loja'];
+    $novo_produto_id = $_POST['produto'];
+    $estoque = $_POST['estoque'];
 
+    atualizarLojaProduto($conexao, $novo_loja_id, $novo_produto_id, $estoque, $loja_id, $produto_id);
+
+    header("location:listar.php");
+
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
