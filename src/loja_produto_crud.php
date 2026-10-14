@@ -31,6 +31,25 @@ function inserirLojaProduto(PDO $conexao, int $loja_id, int $produto_id, int $es
     $consulta->execute();
 }
 
-function buscarLojaProdutoPorIds (PDO $conexao, int $loja_id, int $produto_id){
-    $sql = "";
+function buscarLojaProdutoPorIds (PDO $conexao, int $loja_id, int $produto_id): array{
+    $sql = "SELECT 
+                lojas.nome AS nome_loja,
+                lojas.id AS loja_id,
+                produtos.nome AS nome_produto,
+                produtos.id AS produto_id,
+                lojas_produtos.estoque
+            FROM lojas_produtos  
+            JOIN lojas ON lojas.id = lojas_produtos.loja_id
+            JOIN produtos ON produtos.id = lojas_produtos.produto_id
+            
+            WHERE lojas_produtos.loja_id = :loja_id 
+            AND lojas_produtos.produto_id = :produto_id";
+
+    $consulta = $conexao->prepare($sql);
+
+    $consulta->bindValue(":loja_id", $loja_id);
+    $consulta->bindValue(":produto_id", $produto_id);
+
+    $consulta->execute();
+    return $consulta->fetch();
 }
