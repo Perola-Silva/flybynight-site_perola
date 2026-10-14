@@ -44,14 +44,31 @@ $lojasProdutos = buscarLojasProdutos($conexao);
                         <td><?= $lojaProduto['nome_loja'] ?></td>
                         <td><?= $lojaProduto['nome_produto'] ?></td>
                         <td><?= $lojaProduto['estoque'] ?></td>
-                        <td><a href="editar.php?loja_id=<?= $lojaProduto['loja_id'] ?>&produto_id=<?= $lojaProduto['produto_id'] ?>">Editar</a>
-                            <a href="excluir.php?loja_id=<?= $lojaProduto['loja_id'] ?>&produto_id=<?= $lojaProduto['produto_id'] ?>" class="excluir">Excluir</a></td>
+                        <td>
+                            <a href="editar.php?loja_id=<?= $lojaProduto['loja_id'] ?>&produto_id=<?= $lojaProduto['produto_id'] ?>">Editar</a>
+                            <a href="#" 
+                            data-loja="<?= $lojaProduto['loja_id'] ?>" 
+                            data-produto="<?= $lojaProduto['produto_id'] ?>"
+                            class="excluir">Excluir</a>
+                            
+                            
+                        </td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </main>
+
+    <dialog id="modalConfirmacao" class="dialogo-exclusao">
+        <h3>Tem certeza que deseja excluir o registro?</h3>
+        <div class="acoes-dialogo">
+            <button type="button" id="btnCancelar">Cancelar</button>
+            <button type="button" id="btnConfirmarExclusao">Sim, excluir</button>
+        </div>
+    </dialog>
+
+    <script src="../JS/dialogo-confirmacao.js"></script>
 </body>
 
 </html>
